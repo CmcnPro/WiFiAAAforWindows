@@ -7,7 +7,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
-//using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
@@ -21,11 +20,12 @@ namespace WiFiAAA
 {
     public partial class TokenPicture : Form
     {
-        Boolean ISCLICK_Flag = false;
-        string UserID, Token;
+        Boolean ISCLICK_Flag = false;//判断刷新验证码的按钮是否被按下
+        string UserID, Token;//全局变量
         public ManualResetEvent eventX;
-        Open.OpenAAASoapClient aaa = new Open.OpenAAASoapClient();
+        Open.OpenAAASoapClient aaa = new Open.OpenAAASoapClient();//实例化类
         
+        //将字节数组的验证码转换成图片
         private Image byteArrayToImage(byte[] Bytes)
         {
             using (MemoryStream ms = new MemoryStream(Bytes))
@@ -35,30 +35,25 @@ namespace WiFiAAA
             }
         }
         
-
+        //初始化并获取验证码
         public TokenPicture()
         {
             InitializeComponent();
             TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
         }
+        
+        //手贱，请无视
+        private void label1_Click(object sender, EventArgs e){}
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserIDTxt_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void UserIDTxt_TextChanged(object sender, EventArgs e){}
  
+        //登录按钮
         public void LoginBut_Click(object sender, EventArgs e)
         {
             UserID = UserIDTxt.Text;
             string UserPw = UserPwTxt.Text;
             
-            //获取内网IP
+            //获取真实的内网IP
             IPAddress ipAddr = null;
             IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
             foreach (IPAddress ip in arrIP)
@@ -76,19 +71,8 @@ namespace WiFiAAA
 
             string OpenAPIVersion ="1.0.0.0";
              Token = TokenTxt.Text;
-            //MessageBox.Show(UserIP);
-
-            
 
             Open.LoginResultInfo lr =   aaa.Login(UserID, UserPw, UserIP, OpenAPIVersion, Token);
-
-            //MessageBox.Show(lr.NetGroupName);
-
-            //labNetGName.Text = lr.NetGroupName;
-            //labExpireTime.Text = lr.ExpireTime.ToShortDateString();
-            //labUserName.Text = lr.UserName;
-            //labMsg.Text = lr.Message;
-
 
             if (lr.IsWrong ==null ) MessageBox.Show("无法连接到服务器");
 
@@ -101,10 +85,6 @@ namespace WiFiAAA
                 if (lr.IsWrong == true) MessageBox.Show("发生其他错误（注：你的登陆请求已经成功传递要服务器）");
             }
 
-            //Thread thred = new Thread(new ThreadStart());
-            //thred.IsBackground = true;
-            //thred.Start();
-
             labNetGName.Text = lr.NetGroupName;
             labExpireTime.Text = lr.ExpireTime.ToShortDateString();
             labUserName.Text = lr.UserName;
@@ -112,43 +92,14 @@ namespace WiFiAAA
 
             MessageBox.Show(lr.Message);
 
+            //创建线程，用来保持Keep通信
             Thread t = new Thread(new ThreadStart(keep));
             t.IsBackground = true;
             t.Start();
-            
-
-                //        ThreadPool.QueueUserWorkItem(new WaitCallback(delegate(object o)
-                //{
-                //    int i = 0;
-                //    while (true)
-                //    {
-                //        Thread.Sleep(25000);
-                //        aaa.KeepSession(UserID, Token);
-                //        i++;
-                //        if (i == 23)
-                //        {
-                //            BeepUp.Beep(500, 700); 
-                //            MessageBox.Show("请再次输入验证码！");
-                //            //TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
-                //        }
-                //        if (ISCLICK_Flag = true)
-                //            eventX.WaitOne();
-                //    }
-                //}
-                //));
-
-            //while (lr.IsLogin == true) 
-            //{
-
-            //    labNetGName.Text = lr.NetGroupName;
-            //    labExpireTime.Text = lr.ExpireTime.ToShortDateString();
-            //    labUserName.Text = lr.UserName;
-            //    labMsg.Text = lr.Message;
-
-               
-            //}
+                
         }
 
+        //keep通信
         public void keep()
         {
             int i = 0;
@@ -162,16 +113,12 @@ namespace WiFiAAA
                     BeepUp.Beep(500, 700);
                     MessageBox.Show("请再次输入验证码！");
                 }
-                //if (ISCLICK_Flag = true)
-                //    break;
             }
         }
+        //再次手贱
+        private void TokenPicture_Load(object sender, EventArgs e){}
 
-        private void TokenPicture_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //刷新验证码
         private void TokenBut_Click(object sender, EventArgs e)
         {
             ISCLICK_Flag = true;
@@ -186,8 +133,7 @@ namespace WiFiAAA
             string LogOut =  aaa.Logout(UserID,Token);
             MessageBox.Show(LogOut);
         }
-
-        
+      
     }
 }
 
