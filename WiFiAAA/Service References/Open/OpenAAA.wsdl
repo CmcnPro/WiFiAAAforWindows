@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://aaa.nsu.edu.cn/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://aaa.nsu.edu.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://aaa.nsu.edu.cn/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPW" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpenAPIVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:LoginResultInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginResultInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NetGroupName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpireTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLogin" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsExpire" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsIDPWWrong" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNeedUpdate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsIPInvalid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDisable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsWrong" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoginJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPW" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserIP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpenAPIVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KeepSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KeepSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="KeepSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogoutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTokenPictureBytes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTokenPictureBytesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTokenPictureBytesResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginJson" />
+  </wsdl:message>
+  <wsdl:message name="LoginJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="KeepSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:KeepSession" />
+  </wsdl:message>
+  <wsdl:message name="KeepSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:KeepSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTokenPictureBytesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTokenPictureBytes" />
+  </wsdl:message>
+  <wsdl:message name="GetTokenPictureBytesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTokenPictureBytesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OpenAAASoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginJson">
+      <wsdl:input message="tns:LoginJsonSoapIn" />
+      <wsdl:output message="tns:LoginJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="KeepSession">
+      <wsdl:input message="tns:KeepSessionSoapIn" />
+      <wsdl:output message="tns:KeepSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTokenPictureBytes">
+      <wsdl:input message="tns:GetTokenPictureBytesSoapIn" />
+      <wsdl:output message="tns:GetTokenPictureBytesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OpenAAASoap" type="tns:OpenAAASoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://aaa.nsu.edu.cn/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginJson">
+      <soap:operation soapAction="http://aaa.nsu.edu.cn/LoginJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KeepSession">
+      <soap:operation soapAction="http://aaa.nsu.edu.cn/KeepSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://aaa.nsu.edu.cn/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTokenPictureBytes">
+      <soap:operation soapAction="http://aaa.nsu.edu.cn/GetTokenPictureBytes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OpenAAASoap12" type="tns:OpenAAASoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://aaa.nsu.edu.cn/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginJson">
+      <soap12:operation soapAction="http://aaa.nsu.edu.cn/LoginJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KeepSession">
+      <soap12:operation soapAction="http://aaa.nsu.edu.cn/KeepSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="http://aaa.nsu.edu.cn/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTokenPictureBytes">
+      <soap12:operation soapAction="http://aaa.nsu.edu.cn/GetTokenPictureBytes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OpenAAA">
+    <wsdl:port name="OpenAAASoap" binding="tns:OpenAAASoap">
+      <soap:address location="http://aaa.nsu.edu.cn/NSUAAAWS/OpenAAA.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OpenAAASoap12" binding="tns:OpenAAASoap12">
+      <soap12:address location="http://aaa.nsu.edu.cn/NSUAAAWS/OpenAAA.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

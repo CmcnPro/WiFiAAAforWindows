@@ -1,0 +1,13 @@
+c:\users\or\documents\visual studio 2012\Projects\WiFiAAA\WiFiAAA\obj\Debug\WiFiAAA.csprojResolveAssemblyReference.cache
+c:\users\or\documents\visual studio 2012\Projects\WiFiAAA\WiFiAAA\obj\Debug\WiFiAAA.TokenPicture.resources
+c:\users\or\documents\visual studio 2012\Projects\WiFiAAA\WiFiAAA\obj\Debug\WiFiAAA.Properties.Resources.resources
+c:\users\or\documents\visual studio 2012\Projects\WiFiAAA\WiFiAAA\obj\Debug\WiFiAAA.csproj.GenerateResource.Cache
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\bin\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.exe.config
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\bin\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.exe
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\bin\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.pdb
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\obj\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.exe
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\obj\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.pdb
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\bin\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.exe.manifest
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\bin\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.application
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\obj\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.exe.manifest
+C:\Users\OR\documents\visual studio 2012\Projects\WIFIAAA\WiFiAAA\obj\Debug\WiFiAAA V 0.9.7.2 RC by 牛索伏特丶無雙.application

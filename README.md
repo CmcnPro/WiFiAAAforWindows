@@ -1,1 +1,28 @@
 # WiFiAAAforWindows
+===
+
+成都东软学院第三方网络客户端 For Windows
+
+## What's AAA
+
+AAA 是计算机网络安全术语 认证(Authentication)、授权(Authorization)、计帐(Accounting) 的缩写。
+
+## What's WiFiAAA
+
+WiFiAAA 是基于OpenAAA协议开发的第三方网络客户端
+
+根据相关规定，网络上开源的版本不会加入开启承载网络的功能！
+
+## Notes
+
+2015/4/3 V0.9.7.2 RC发布，增加快捷键功能，修复再次输入验证码，发送KeepSession请求时，Tonken错误的BUG。
+2015/4/3 V0.9.7.1 RC发布，修复一些问题，开始内部测试使用。
+2015/4/2 第一版发布，满足基础功能
+
+## What used library
+
+.NetFramework 4.5.1 	OpenAAA WebService 1.0.0.0
+
+## Author
+
+Written by 牛索伏特丶无双
