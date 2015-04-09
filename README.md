@@ -1,4 +1,4 @@
-# WiFiAAAforWindows
+# WiFiAAA for Windows
 ===
 
 成都东软学院第三方网络客户端 For Windows
@@ -15,6 +15,7 @@ WiFiAAA 是基于OpenAAA协议开发的第三方网络客户端
 
 ## Notes
 
+2015/4/9 V0.9.8.0 精简大量代码，添加注释。
 2015/4/3 V0.9.7.2 RC发布，增加快捷键功能，修复再次输入验证码，发送KeepSession请求时，Tonken错误的BUG。
 2015/4/3 V0.9.7.1 RC发布，修复一些问题，开始内部测试使用。
 2015/4/2 第一版发布，满足基础功能
@@ -25,4 +26,4 @@ WiFiAAA 是基于OpenAAA协议开发的第三方网络客户端
 
 ## Author
 
-Written by 牛索伏特丶无双
+Written by CmcnPro
