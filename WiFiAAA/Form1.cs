@@ -22,7 +22,10 @@ namespace WiFiAAA
     public partial class TokenPicture : Form
     {
         Boolean ISCLICK_Flag = false;//判断刷新验证码的按钮是否被按下
+<<<<<<< HEAD
         string UserIP;
+=======
+>>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
         string UserID, Token;//全局变量
         public ManualResetEvent eventX;
         Open.OpenAAASoapClient aaa = new Open.OpenAAASoapClient();//实例化类
@@ -36,9 +39,31 @@ namespace WiFiAAA
                 return outputImg;
             }
         }
+<<<<<<< HEAD
 
         public void GetIP()
         {
+=======
+        
+        //初始化并获取验证码
+        public TokenPicture()
+        {
+            InitializeComponent();
+            TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
+        }
+        
+        //手贱，请无视
+        private void label1_Click(object sender, EventArgs e){}
+
+        private void UserIDTxt_TextChanged(object sender, EventArgs e){}
+ 
+        //登录按钮
+        public void LoginBut_Click(object sender, EventArgs e)
+        {
+            UserID = UserIDTxt.Text;
+            string UserPw = UserPwTxt.Text;
+            
+>>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
             //获取真实的内网IP
             IPAddress ipAddr = null;
             IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
@@ -56,6 +81,7 @@ namespace WiFiAAA
             UserIP = ipAddr.ToString();
         }
 
+<<<<<<< HEAD
         
         //初始化并获取验证码
         public TokenPicture()
@@ -95,6 +121,11 @@ namespace WiFiAAA
             string OpenAPIVersion ="1.0.0.0";
              Token = TokenTxt.Text;
 
+=======
+            string OpenAPIVersion ="1.0.0.0";
+             Token = TokenTxt.Text;
+
+>>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
             Open.LoginResultInfo lr =   aaa.Login(UserID, UserPw, UserIP, OpenAPIVersion, Token);
 
             if (lr.IsWrong ==null ) MessageBox.Show("无法连接到服务器");
@@ -119,7 +150,11 @@ namespace WiFiAAA
             Thread t = new Thread(new ThreadStart(keep));
             t.IsBackground = true;
             t.Start();
+<<<<<<< HEAD
            
+=======
+                
+>>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
         }
 
         //keep通信
