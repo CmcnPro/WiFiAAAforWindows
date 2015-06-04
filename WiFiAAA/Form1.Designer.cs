@@ -43,7 +43,12 @@
             this.labUserName = new System.Windows.Forms.Label();
             this.labMsg = new System.Windows.Forms.Label();
             this.TokenBut = new System.Windows.Forms.Button();
+            this.WebSiteHome = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MyIPTextBox = new System.Windows.Forms.TextBox();
+            this.VersionLab = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TokenPic)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TokenPic
@@ -179,12 +184,55 @@
             this.TokenBut.UseVisualStyleBackColor = true;
             this.TokenBut.Click += new System.EventHandler(this.TokenBut_Click);
             // 
+            // WebSiteHome
+            // 
+            this.WebSiteHome.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.WebSiteHome.Location = new System.Drawing.Point(297, 294);
+            this.WebSiteHome.Name = "WebSiteHome";
+            this.WebSiteHome.Size = new System.Drawing.Size(136, 29);
+            this.WebSiteHome.TabIndex = 15;
+            this.WebSiteHome.Text = "本项目主页/检查更新";
+            this.WebSiteHome.UseVisualStyleBackColor = true;
+            this.WebSiteHome.Click += new System.EventHandler(this.WebSiteHome_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.MyIPTextBox);
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.groupBox1.Location = new System.Drawing.Point(17, 277);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(234, 56);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "IP地址不正确？试试自定义IP";
+            // 
+            // MyIPTextBox
+            // 
+            this.MyIPTextBox.Location = new System.Drawing.Point(25, 23);
+            this.MyIPTextBox.Name = "MyIPTextBox";
+            this.MyIPTextBox.Size = new System.Drawing.Size(186, 23);
+            this.MyIPTextBox.TabIndex = 0;
+            this.MyIPTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // VersionLab
+            // 
+            this.VersionLab.AutoSize = true;
+            this.VersionLab.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.VersionLab.Location = new System.Drawing.Point(414, 326);
+            this.VersionLab.Name = "VersionLab";
+            this.VersionLab.Size = new System.Drawing.Size(59, 17);
+            this.VersionLab.TabIndex = 17;
+            this.VersionLab.Text = "Ver 1.0.0";
+            // 
             // TokenPicture
             // 
             this.AcceptButton = this.LoginBut;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 279);
+            this.ClientSize = new System.Drawing.Size(474, 347);
+            this.Controls.Add(this.VersionLab);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.WebSiteHome);
             this.Controls.Add(this.TokenBut);
             this.Controls.Add(this.labMsg);
             this.Controls.Add(this.labUserName);
@@ -207,6 +255,8 @@
             this.Text = "WiFiAAA by CmcnPro";
             this.Load += new System.EventHandler(this.TokenPicture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TokenPic)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +278,10 @@
         private System.Windows.Forms.Label labUserName;
         private System.Windows.Forms.Label labMsg;
         private System.Windows.Forms.Button TokenBut;
+        private System.Windows.Forms.Button WebSiteHome;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox MyIPTextBox;
+        private System.Windows.Forms.Label VersionLab;
     }
 }
 

@@ -22,10 +22,7 @@ namespace WiFiAAA
     public partial class TokenPicture : Form
     {
         Boolean ISCLICK_Flag = false;//判断刷新验证码的按钮是否被按下
-<<<<<<< HEAD
         string UserIP;
-=======
->>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
         string UserID, Token;//全局变量
         public ManualResetEvent eventX;
         Open.OpenAAASoapClient aaa = new Open.OpenAAASoapClient();//实例化类
@@ -39,31 +36,10 @@ namespace WiFiAAA
                 return outputImg;
             }
         }
-<<<<<<< HEAD
 
+        //获取IP
         public void GetIP()
         {
-=======
-        
-        //初始化并获取验证码
-        public TokenPicture()
-        {
-            InitializeComponent();
-            TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
-        }
-        
-        //手贱，请无视
-        private void label1_Click(object sender, EventArgs e){}
-
-        private void UserIDTxt_TextChanged(object sender, EventArgs e){}
- 
-        //登录按钮
-        public void LoginBut_Click(object sender, EventArgs e)
-        {
-            UserID = UserIDTxt.Text;
-            string UserPw = UserPwTxt.Text;
-            
->>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
             //获取真实的内网IP
             IPAddress ipAddr = null;
             IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
@@ -81,12 +57,31 @@ namespace WiFiAAA
             UserIP = ipAddr.ToString();
         }
 
-<<<<<<< HEAD
+        //读取WiFiAAA.xml内的用户信息
+        /*目前在窗体初始化时读取，检测不到该配置文件的存在会停止工作，配置文件的格式如下
+         <config>
+	            <UserID></UserID>
+	            <UserPW></UserPW>
+           </config>
+         */
+        public void GetXML()
+        {
+            XmlDocument XML = new XmlDocument();
+            XML.Load("WiFiAAA.xml");
+            XmlNode root = XML.SelectSingleNode("config");
+            XmlNode XMLID = root.SelectSingleNode("UserID");
+            string strID = XMLID.InnerText;
+            UserIDTxt.Text = strID;
+            XmlNode XMLPW = root.SelectSingleNode("UserPW");
+            string strPW = XMLPW.InnerText;
+            UserPwTxt.Text = strPW;
+        }
         
         //初始化并获取验证码
         public TokenPicture()
         {
             InitializeComponent();
+            GetXML();
             TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
             GetIP();
         }
@@ -120,12 +115,8 @@ namespace WiFiAAA
 
             string OpenAPIVersion ="1.0.0.0";
              Token = TokenTxt.Text;
+             //MessageBox.Show(UserIP);
 
-=======
-            string OpenAPIVersion ="1.0.0.0";
-             Token = TokenTxt.Text;
-
->>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
             Open.LoginResultInfo lr =   aaa.Login(UserID, UserPw, UserIP, OpenAPIVersion, Token);
 
             if (lr.IsWrong ==null ) MessageBox.Show("无法连接到服务器");
@@ -150,11 +141,7 @@ namespace WiFiAAA
             Thread t = new Thread(new ThreadStart(keep));
             t.IsBackground = true;
             t.Start();
-<<<<<<< HEAD
            
-=======
-                
->>>>>>> 921eb90cc04ac03c84039dc5240a4faf37c00804
         }
 
         //keep通信
@@ -168,6 +155,7 @@ namespace WiFiAAA
                 i++;
                 if (i == 23)
                 {
+                    //播放webAAA的提示音
                     WMPLib.WindowsMediaPlayerClass player = new WMPLib.WindowsMediaPlayerClass();
                     player.URL = @"http://aaa.nsu.edu.cn/nsuaaaws/webaaa/notice.wav";
                     player.uiMode = "None";
@@ -200,11 +188,23 @@ namespace WiFiAAA
             MessageBox.Show(LogOut);
             labMsg.Text = "您已退出";
         }
+
+        //自定义IP功能
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            UserIP = MyIPTextBox.Text;
+        }
+
+        //项目墙内主页
+        private void WebSiteHome_Click(object sender, EventArgs e)
+        {
+           System.Diagnostics.Process.Start("http://cmcnpro.cn/?p=7");
+        }
       
     }
 }
 
-// 滴滴声
+// 滴滴声 目前的版本中已停用，改为播放webAAA的提示音
 public class BeepUp  //新建一个类
 {
     /// <param name="iFrequency">声音频率（从37Hz到32767Hz）。在windows95中忽略</param>  
