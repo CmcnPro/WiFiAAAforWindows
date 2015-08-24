@@ -40,7 +40,7 @@ namespace WiFiAAA
         //获取IP
         public void GetIP()
         {
-            //获取真实的内网IP
+            //获取真实的内网IP,可能在某些多网卡的并不能获取正确的内网IP
             IPAddress ipAddr = null;
             IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
             foreach (IPAddress ip in arrIP)
@@ -81,7 +81,10 @@ namespace WiFiAAA
         public TokenPicture()
         {
             InitializeComponent();
-            GetXML();
+            if (System.IO.File.Exists(@"WiFiAAA.xml"))//判断是否存在WiFiAAA.xml这个配置文件的存在，在就读取里面的信息
+            {
+                GetXML();
+            }
             TokenPic.Image = byteArrayToImage(aaa.GetTokenPictureBytes());
             GetIP();
         }
@@ -96,23 +99,6 @@ namespace WiFiAAA
         {
             UserID = UserIDTxt.Text;
             string UserPw = UserPwTxt.Text;
-            
-            ////获取真实的内网IP
-            //IPAddress ipAddr = null;
-            //IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
-            //foreach (IPAddress ip in arrIP)
-            //{
-            //    if (System.Net.Sockets.AddressFamily.InterNetwork.Equals(ip.AddressFamily))
-            //    {
-            //        ipAddr = ip;
-            //    }
-            //    else if (System.Net.Sockets.AddressFamily.InterNetworkV6.Equals(ip.AddressFamily))
-            //    {
-            //        ipAddr = ip;
-            //    }
-            //}
-            //string UserIP = ipAddr.ToString();
-
             string OpenAPIVersion ="1.0.0.0";
              Token = TokenTxt.Text;
              //MessageBox.Show(UserIP);
@@ -128,20 +114,21 @@ namespace WiFiAAA
                 if (lr.IsIPInvalid == true) MessageBox.Show("IP无效！");
                 if (lr.IsDisable == true) MessageBox.Show("账户无效，请联系信息中心！");
                 if (lr.IsWrong == true) MessageBox.Show("发生其他错误（注：你的登陆请求已经成功传递要服务器）");
+                labMsg.Text = lr.Message;
             }
-
-            labNetGName.Text = lr.NetGroupName;
-            labExpireTime.Text = lr.ExpireTime.ToShortDateString();
-            labUserName.Text = lr.UserName;
-            labMsg.Text = lr.Message+" 正在保持通信";
-
-            MessageBox.Show(lr.Message);
-
-            //创建线程，用来保持Keep通信
-            Thread t = new Thread(new ThreadStart(keep));
-            t.IsBackground = true;
-            t.Start();
-           
+            else 
+            {
+                labNetGName.Text = "带宽组：" + lr.NetGroupName;
+                labExpireTime.Text = "账户有效期：" + lr.ExpireTime.ToShortDateString();
+                labUserName.Text = "户主：" + lr.UserName;
+                labMsg.Text = lr.Message+" 正在保持通信";
+                MessageBox.Show(lr.Message);
+                //创建线程，用来保持Keep通信
+          
+                Thread t = new Thread(new ThreadStart(keep));
+                t.IsBackground = true;
+                t.Start();
+            }
         }
 
         //keep通信

@@ -222,7 +222,7 @@
             this.VersionLab.Name = "VersionLab";
             this.VersionLab.Size = new System.Drawing.Size(59, 17);
             this.VersionLab.TabIndex = 17;
-            this.VersionLab.Text = "Ver 1.0.0";
+            this.VersionLab.Text = "Ver 1.1.0";
             // 
             // TokenPicture
             // 
