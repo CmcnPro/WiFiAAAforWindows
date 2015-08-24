@@ -40,7 +40,7 @@ namespace WiFiAAA
         //获取IP
         public void GetIP()
         {
-            //获取真实的内网IP,可能在某些多网卡的并不能获取正确的内网IP
+            //获取真实的内网IP,可能在某些多网卡的并不能获取正确的内网IP。
             IPAddress ipAddr = null;
             IPAddress[] arrIP = Dns.GetHostAddresses(Dns.GetHostName());
             foreach (IPAddress ip in arrIP)
@@ -186,6 +186,12 @@ namespace WiFiAAA
         private void WebSiteHome_Click(object sender, EventArgs e)
         {
            System.Diagnostics.Process.Start("http://cmcnpro.cn/?p=7");
+        }
+
+        //手贱
+        private void VersionLab_Click(object sender, EventArgs e)
+        {
+
         }
       
     }

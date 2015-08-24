@@ -223,6 +223,7 @@
             this.VersionLab.Size = new System.Drawing.Size(59, 17);
             this.VersionLab.TabIndex = 17;
             this.VersionLab.Text = "Ver 1.1.0";
+            this.VersionLab.Click += new System.EventHandler(this.VersionLab_Click);
             // 
             // TokenPicture
             // 
