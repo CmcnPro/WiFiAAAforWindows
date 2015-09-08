@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TokenPicture));
             this.TokenPic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,8 +48,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.MyIPTextBox = new System.Windows.Forms.TextBox();
             this.VersionLab = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.TokenPic)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TokenPic
@@ -73,6 +79,7 @@
             // TokenTxt
             // 
             this.TokenTxt.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TokenTxt.ImeMode = System.Windows.Forms.ImeMode.On;
             this.TokenTxt.Location = new System.Drawing.Point(12, 133);
             this.TokenTxt.Name = "TokenTxt";
             this.TokenTxt.Size = new System.Drawing.Size(240, 33);
@@ -119,7 +126,7 @@
             // LoginBut
             // 
             this.LoginBut.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LoginBut.Location = new System.Drawing.Point(270, 133);
+            this.LoginBut.Location = new System.Drawing.Point(260, 133);
             this.LoginBut.Name = "LoginBut";
             this.LoginBut.Size = new System.Drawing.Size(191, 64);
             this.LoginBut.TabIndex = 7;
@@ -130,7 +137,7 @@
             // LogoutBut
             // 
             this.LogoutBut.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LogoutBut.Location = new System.Drawing.Point(270, 203);
+            this.LogoutBut.Location = new System.Drawing.Point(260, 203);
             this.LogoutBut.Name = "LogoutBut";
             this.LogoutBut.Size = new System.Drawing.Size(191, 64);
             this.LogoutBut.TabIndex = 8;
@@ -142,7 +149,7 @@
             // 
             this.labNetGName.AutoSize = true;
             this.labNetGName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labNetGName.Location = new System.Drawing.Point(281, 12);
+            this.labNetGName.Location = new System.Drawing.Point(260, 12);
             this.labNetGName.Name = "labNetGName";
             this.labNetGName.Size = new System.Drawing.Size(0, 17);
             this.labNetGName.TabIndex = 9;
@@ -151,7 +158,7 @@
             // 
             this.labExpireTime.AutoSize = true;
             this.labExpireTime.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labExpireTime.Location = new System.Drawing.Point(281, 33);
+            this.labExpireTime.Location = new System.Drawing.Point(260, 33);
             this.labExpireTime.Name = "labExpireTime";
             this.labExpireTime.Size = new System.Drawing.Size(0, 17);
             this.labExpireTime.TabIndex = 10;
@@ -160,17 +167,17 @@
             // 
             this.labUserName.AutoSize = true;
             this.labUserName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labUserName.Location = new System.Drawing.Point(281, 54);
+            this.labUserName.Location = new System.Drawing.Point(260, 54);
             this.labUserName.Name = "labUserName";
             this.labUserName.Size = new System.Drawing.Size(0, 17);
             this.labUserName.TabIndex = 11;
             // 
             // labMsg
             // 
-            this.labMsg.AutoSize = true;
-            this.labMsg.Location = new System.Drawing.Point(281, 90);
+            this.labMsg.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.labMsg.Location = new System.Drawing.Point(260, 90);
             this.labMsg.Name = "labMsg";
-            this.labMsg.Size = new System.Drawing.Size(0, 12);
+            this.labMsg.Size = new System.Drawing.Size(202, 39);
             this.labMsg.TabIndex = 12;
             // 
             // TokenBut
@@ -222,8 +229,40 @@
             this.VersionLab.Name = "VersionLab";
             this.VersionLab.Size = new System.Drawing.Size(59, 17);
             this.VersionLab.TabIndex = 17;
-            this.VersionLab.Text = "Ver 1.1.0";
+            this.VersionLab.Text = "Ver 1.1.1";
             this.VersionLab.Click += new System.EventHandler(this.VersionLab_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "WiFiAAA by CmcnPro";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox1,
+            this.toolStripComboBox1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(112, 48);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(111, 22);
+            this.toolStripTextBox1.Text = "主界面";
+            this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(111, 22);
+            this.toolStripComboBox1.Text = "退出";
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // TokenPicture
             // 
@@ -255,9 +294,11 @@
             this.Name = "TokenPicture";
             this.Text = "WiFiAAA by CmcnPro";
             this.Load += new System.EventHandler(this.TokenPicture_Load);
+            this.SizeChanged += new System.EventHandler(this.TokenPicture_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.TokenPic)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,6 +324,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox MyIPTextBox;
         private System.Windows.Forms.Label VersionLab;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripComboBox1;
     }
 }
 
